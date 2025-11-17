@@ -6,13 +6,16 @@ module.exports = {
     const groupName = groupInfo.subject;
     const totalMembers = groupInfo.participants.length;
 
-    for (const member of newMembers) {
+    for (const members of newMembers) {
+        const member = members.phoneNumber
       let profilePicUrl;
       try {
         profilePicUrl = await api.profilePictureUrl(member, 'image');
       } catch (error) {
         profilePicUrl = null;
       }
+        
+        
 
       const username = `@${member.split('@')[0]}`;
       const welcomeMessage = `🎉✨ *Hey ${username}, Welcome to ${groupName}!* ✨🎉\n\n` +
@@ -32,6 +35,10 @@ module.exports = {
           mentions: [member]
         });
       }
+    }
+  }
+};
+    }
     }
   }
 };
